@@ -1,0 +1,26 @@
+---
+- name: Stop and disable adia-pull-qc-on-poop service
+  systemd:
+    name: adia-pull-qc-on-poop
+    state: stopped
+    enabled: false
+  failed_when: false
+
+- name: Remove adia-pull-qc-on-poop service file
+  file:
+    path: /etc/systemd/system/adia-pull-qc-on-poop.service
+    state: absent
+  notify: reload systemd daemon
+
+- name: Stop and disable adia-pull-qc-on-boot service
+  systemd:
+    name: adia-pull-qc-on-boot
+    state: stopped
+    enabled: false
+  failed_when: false
+
+- name: Remove adia-pull-qc-on-boot service file
+  file:
+    path: /etc/systemd/system/adia-pull-qc-on-boot.service
+    state: absent
+  notify: reload systemd daemon

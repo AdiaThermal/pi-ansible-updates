@@ -1,0 +1,9 @@
+---
+- name: Deploy network_check timer
+  copy:
+    src: network_check.timer
+    dest: /etc/systemd/system/network_check.timer
+    owner: root
+    group: root
+    mode: "0644"
+  notify: restart network_check timer

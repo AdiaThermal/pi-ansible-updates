@@ -1,0 +1,7 @@
+---
+- name: restart network_check timer
+  systemd:
+    name: network_check.timer
+    state: restarted
+    enabled: true
+    daemon_reload: true
