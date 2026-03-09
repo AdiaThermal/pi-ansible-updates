@@ -1,0 +1,24 @@
+---
+- name: Configure Pi
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Deploy network_check timer
+      copy:
+        src: files/network_check.timer
+        dest: /etc/systemd/system/network_check.timer
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Reload systemd daemon
+      systemd:
+        daemon_reload: true
+
+    - name: Restart network_check timer
+      systemd:
+        name: network_check.timer
+        state: restarted
+        enabled: true
