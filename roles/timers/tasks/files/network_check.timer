@@ -1,9 +1,9 @@
 [Unit]
-Description=Run the network_check.service every 10 minutes
+Description=Run the network_check.service every 7 minutes
 
 [Timer]
 OnBootSec=5min
-OnCalendar=*:0/10
+OnCalendar=*:0/7
 Unit=network_check.service
 
 [Install]
